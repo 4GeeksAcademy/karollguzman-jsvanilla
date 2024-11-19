@@ -6,22 +6,35 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 
-  window.onload = function() {
-    const domains = generateAllDomains();
-    domains.forEach(domain => console.log(domain));
-  };
+window.onload = function() {
+  const domains = generateAllDomains();
+  const domainList = document.getElementById("domain-list");
 
-//write your code here
+  domains.forEach(domain => {
+    // Imprimir el dominio en la consola
+    console.log(domain);
+
+    // Crear un nuevo div para cada dominio
+    const domainItem = document.createElement("div");
+    domainItem.className = "card m-2 p-2"; // Añadir clases de Bootstrap para estilizar el recuadro
+    domainItem.textContent = domain;
+
+    // Añadir el div al contenedor domain-list
+    domainList.appendChild(domainItem);
+  });
+};
+
+
 function generateAllDomains() {
-  let pronoun = ['the','our', 'my', 'your', 'his'];
-  let adj = ['great', 'big', 'small', 'fast', 'slow'];
-  let noun = ['jogger', 'racoon', 'dog', 'cat', 'fish'];
+ const pronouns = ['the','our', 'my', 'your', 'his'];
+ const adjectives = ['great', 'big', 'small', 'fast', 'slow'];
+ const nouns = ['jogger', 'racoon', 'dog', 'cat', 'fish'];
 
-  let domains = [];
-  for (let p of pronoun) {
-    for (let a of adj) {
-      for (let n of noun) {
-        domains.push(`${p}${a}${n}.com`);
+  const domains = [];
+  for (const pronoun of pronouns) {
+    for (const adjective of adjectives) {
+      for (const noun of nouns) {
+        domains.push(`${pronoun}${adjective}${noun}.com`);
       }
     }
   }
